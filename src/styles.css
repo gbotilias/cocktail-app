@@ -1,2 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap-icons/font/bootstrap-icons.css';
+
+.light-theme {
+    background: #ffffff;
+    --text-color: #000000;
+  }
+
+.dark-theme {
+    background: #222222;
+    --text-color: #ffffff;
+  }
+  
+.body {
+    background: var(--background);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
