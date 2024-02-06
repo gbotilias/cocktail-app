@@ -55,9 +55,9 @@ export class ItemListComponent implements OnInit {
     });
   }
 
-  showTeamDetails(item: ItemModel): void {
-    // console.log(team);
-    this.router.navigate(['item-detail', { teadData: JSON.stringify(item) }]);
+  showItemDetails(itemId: string): void {
+    console.log(itemId);
+    this.router.navigate(['item-detail'], {queryParams: {_id: itemId}})
   }
 
 }

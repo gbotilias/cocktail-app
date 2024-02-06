@@ -12,9 +12,14 @@ export class ItemService {
     constructor(private http: HttpClient) {
     }
 
-    getAllITems(): Observable<ItemModel[]> {
+    getAll(): Observable<ItemModel[]> {
         const endpoint = '/search.php?f=a';
         return this.http.get<ItemModel[]>(environment.API_BASE_URL + endpoint);
+    }
+
+    getOne(itemId: string): Observable<ItemModel[]> {
+        const endpoint = '/lookup.php?i=';
+        return this.http.get<ItemModel[]>(environment.API_BASE_URL + endpoint + itemId);
     }
 
 }

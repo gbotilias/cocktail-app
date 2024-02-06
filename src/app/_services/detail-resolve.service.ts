@@ -7,11 +7,12 @@ import { ItemService } from "./item.service";
 @Injectable({
     providedIn: 'root'
 })
-export class ListResolveService implements Resolve<Observable<ItemModel[]>> {
-
+export class DetailResolveService implements Resolve<Observable<ItemModel[]>> {
+    
     constructor(private itemService: ItemService) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ItemModel[]> {
-        return this.itemService.getAll();
+        const itemId = route.queryParams["_id"];
+        return this.itemService.getOne(itemId);
     }
 }

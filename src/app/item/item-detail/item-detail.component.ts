@@ -16,9 +16,10 @@ export class ItemDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // const data = this.activatedRoute.snapshot.paramMap.getAll('teadData');
-    // this.teamDetail = JSON.parse(data[0]);
-    // console.log(this.teamDetail);
+    this.activatedRoute.data.subscribe((respone: any) => {
+      console.log(respone);
+      
+    })
   }
 
 }

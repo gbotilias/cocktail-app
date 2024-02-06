@@ -3,4 +3,9 @@
     display: flex;
     border-bottom: 1px solid lightgrey;
     place-content: end;
+    margin-bottom: 30px;
+}
+
+.header-button {
+    margin-right: 20px;
 }

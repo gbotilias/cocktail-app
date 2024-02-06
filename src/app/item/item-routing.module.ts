@@ -12,7 +12,8 @@ const routes: Routes = [
 
   {
     path: 'item-detail',
-    component: ItemDetailComponent
+    loadChildren: () => import('./item-detail/item-detail.module')
+      .then(m => m.ItemDetailModule)
   },
 
   { path: '', redirectTo: 'item-list', pathMatch: 'full' },
