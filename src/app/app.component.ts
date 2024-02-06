@@ -1,45 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'cocktail-app';
-  currentTheme: string | undefined;
+  currentTheme: string;
 
   constructor() {
-    const storedTheme = localStorage.getItem('currentTheme');
-    console.log(storedTheme);
-
-    if (storedTheme !== null) {
-      this.currentTheme = storedTheme;
-    } else {
-      this.currentTheme = 'light';
-      localStorage.setItem('currentTheme', this.currentTheme);
-    }
-
-    this.toggleTheme();
-
-  }
-
-  ngOnInit(): void {
-    // this.isLightTheme = true;
+    this.currentTheme = localStorage.getItem('currentTheme') || 'light';
+    this.applyTheme();
   }
 
   toggleTheme() {
-    if (this.currentTheme === 'light') {
-      document.body.classList.remove('dark-theme');
-      document.body.classList.add(`light-theme`);
-      this.currentTheme = 'dark'; 
-      localStorage.setItem('currentTheme', 'light');
-    } else {
-      document.body.classList.remove('light-theme');
-      document.body.classList.add(`dark-theme`);
-      this.currentTheme = 'light';
-      localStorage.setItem('currentTheme', 'dark');
-    }
+    this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light'
+    localStorage.setItem('currentTheme', this.currentTheme);
+    this.applyTheme();
   }
-  
+
+  applyTheme() {
+    document.body.classList.remove('dark-theme', 'light-theme');
+    document.body.classList.add(`${this.currentTheme}-theme`);
+  }
 }

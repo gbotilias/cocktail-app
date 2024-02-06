@@ -41,13 +41,13 @@ export class ItemListComponent implements OnInit {
   }
 
   // Function to filter the item list based on search term and selected category
-  filterItemList(): void {
+  filterItemList() {
     this.filteredItemList = this.itemList.filter(item => {
       return item.strIngredient1.toLowerCase().includes(this.searchIngredient.toLowerCase());
     });
   }
 
-  selectCategory(): void {
+  selectCategory() {
     this.filteredItemList = this.itemList.filter(item => {
       const ingredientMatch = item.strIngredient1.toLowerCase().includes(this.searchIngredient.toLowerCase());
       const categoryMatch = !this.selectedCategory || item.strCategory === this.selectedCategory;

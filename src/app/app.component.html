@@ -1,4 +1,12 @@
 <div>
-    <button (click)="toggleTheme()">tetete</button>  
+    <header class="header-bar">
+        <button *ngIf="currentTheme === 'light'" type="button" class="btn btn-white" (click)="toggleTheme()">
+            <span><i class="bi bi-moon"></i> Darkmode</span>
+        </button>
+        <button *ngIf="currentTheme === 'dark'" type="button" class="btn btn-white"
+        style="background-color: white;" (click)="toggleTheme()">
+            <span><i class="bi bi-sun"></i> Lightmode</span>
+        </button>
+    </header>
+    <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
