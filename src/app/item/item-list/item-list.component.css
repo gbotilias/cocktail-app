@@ -1,7 +1,15 @@
 .form-control {
-    width: 40%;
+    width: 42%;
 }
 
 .form-select {
-    width: 30%;
+    width: 35%;
+}
+
+.card {
+    height: 100%;
+}
+
+.card-text {
+    font-size: 12px; 
 }

@@ -9,7 +9,7 @@ import { ItemModel } from 'src/app/_models/item-model';
 })
 export class ItemDetailComponent implements OnInit {
 
-  public teamDetail = {} as ItemModel;
+  public itemDetail = {} as ItemModel;
 
   constructor(
     private activatedRoute: ActivatedRoute
@@ -17,9 +17,8 @@ export class ItemDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((respone: any) => {
-      console.log(respone);
-      
+      console.log(respone.data.drinks[0]);
+      this.itemDetail = respone.data.drinks[0];
     })
   }
-
 }

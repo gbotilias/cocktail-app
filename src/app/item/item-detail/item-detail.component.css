@@ -1,0 +1,27 @@
+.cocktail-details {
+  max-width: 60%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  }
+
+.drink-image {
+  border-radius: 10px;
+  height: 250px;
+}
+
+ul {
+  list-style: none;
+  padding: 5px;
+}
+
+li {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+h3, h4 {
+  color: #333;
+}

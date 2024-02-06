@@ -35,12 +35,6 @@ export class ItemListComponent implements OnInit {
     })
   }
 
-  test() {
-    console.log('test');
-
-  }
-
-  // Function to filter the item list based on search term and selected category
   filterItemList() {
     this.filteredItemList = this.itemList.filter(item => {
       return item.strIngredient1.toLowerCase().includes(this.searchIngredient.toLowerCase());
@@ -57,7 +51,7 @@ export class ItemListComponent implements OnInit {
 
   showItemDetails(itemId: string): void {
     console.log(itemId);
-    this.router.navigate(['item-detail'], {queryParams: {_id: itemId}})
+    this.router.navigate(['item-detail'], { queryParams: { _id: itemId } })
   }
 
 }

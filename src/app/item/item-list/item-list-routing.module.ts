@@ -5,9 +5,9 @@ import { ListResolveService } from 'src/app/_services/list-resolve.service';
 
 const routes: Routes = [
   {
-    path:'',
-    component:ItemListComponent,
-    resolve: {data: ListResolveService}
+    path: '',
+    component: ItemListComponent,
+    resolve: { data: ListResolveService }
   }
 ];
 
