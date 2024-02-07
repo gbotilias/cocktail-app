@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-The Cocktail App fetches data from a cocktail API, providing the following functionalities:
+The Cocktail App fetches cocktail data whose name begins with the letter 'A' from a REST API, providing the following functionalities:
 
 - View all items on the main page
 - Search for items using an input field
@@ -10,6 +10,7 @@ The Cocktail App fetches data from a cocktail API, providing the following funct
 - Access detailed information by clicking on an item
 - Toggle between light and dark mode
 - Persist the color scheme state after browser refresh
+  *REST API:* https://www.thecocktaildb.com/api.php
 
 ## Tech Stack
 
