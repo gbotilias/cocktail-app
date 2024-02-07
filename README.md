@@ -10,6 +10,7 @@ The Cocktail App fetches cocktail data whose name begins with the letter 'A' fro
 - Access detailed information by clicking on an item
 - Toggle between light and dark mode
 - Persist the color scheme state after browser refresh
+
 *REST API:* https://www.thecocktaildb.com/api.php
 
 ## Tech Stack
