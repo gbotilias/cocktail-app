@@ -20,17 +20,14 @@ The Cocktail App fetches data from a cocktail API, providing the following funct
 
 ## Installation Instructions
 
-1. **Clone Repository:** git clone [repository_url]
+1. **Clone Repository:** git clone https://github.com/gbotilias/cocktail-app.git
 
-2. **Navigate to Project Directory:** 
-   cd [project_directory]
-
-3. **Install Dependencies:**
+2. **Install Dependencies:**
    npm install
 
-4. **Run:**
+3. **Run:**
    ng serve
 
-5. **Access Local by:**
+4. **Access Local by:**
    http://localhost:4200/
 
