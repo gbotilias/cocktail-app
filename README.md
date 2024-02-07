@@ -20,11 +20,10 @@ The Cocktail App fetches data from a cocktail API, providing the following funct
 
 ## Installation Instructions
 
-1. **Clone Repository:**  
-    git clone [repository_url]
+1. **Clone Repository:** git clone [repository_url]
 
 2. **Navigate to Project Directory:** 
-    cd [project_directory]
+   cd [project_directory]
 
 3. **Install Dependencies:**
    npm install
