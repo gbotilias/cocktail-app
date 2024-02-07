@@ -1,27 +1,37 @@
-# CocktailApp
+# Cocktail App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.6.
+## Project Overview
 
-## Development server
+The Cocktail App fetches data from a cocktail API, providing the following functionalities:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- View all items on the main page
+- Search for items using an input field
+- Filter items by category
+- Access detailed information by clicking on an item
+- Toggle between light and dark mode
+- Persist the color scheme state after browser refresh
 
-## Code scaffolding
+## Tech Stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular CLI:** 13.3.6
+- **Node:** 18.10.0
+- **Package Manager:** npm 8.19.2
+- **Bootstrap:** 5.3.2
 
-## Build
+## Installation Instructions
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Clone Repository:**  
+    git clone [repository_url]
 
-## Running unit tests
+2. **Navigate to Project Directory:** 
+    cd [project_directory]
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. **Install Dependencies:**
+   npm install
 
-## Running end-to-end tests
+4. **Run:**
+   ng serve
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+5. **Access Local by:**
+   http://localhost:4200/
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
