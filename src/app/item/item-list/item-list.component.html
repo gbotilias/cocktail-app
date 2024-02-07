@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row">
+  <div class="row" style="margin-bottom: 20px;">
     <!-- Search Input -->
-    <div class="col-md-6 mb-4">
-      <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="searchIngredient"
-        (input)="filterItemList()" />
+    <div class="col-md-6 col-sm-12">
+      <input type="text" class="form-control" placeholder="Search by name" 
+      [(ngModel)]="searchByName" (input)="searchItemByName()"/>
     </div>
-    <!-- Category Select Dropdown -->
-    <div class="col-md-6 mb-4" style="text-align: -webkit-right;">
+    <!-- Select Category -->
+    <div class="col-md-6 col-sm-12" style="text-align: -webkit-right;">
       <select class="form-select" [(ngModel)]="selectedCategory" (change)="selectCategory()">
         <option value="" selected>All Categories</option>
         <option *ngFor="let category of categories" [value]="category">{{category}}</option>
@@ -15,12 +15,12 @@
   </div>
   <!-- Item List -->
   <div class="row">
-    <div *ngFor="let item of filteredItemList" class="col-md-3 mb-4">
+    <div *ngFor="let item of filteredItemList" class="col-md-3" style="margin-bottom: 50px">
       <div class="card" (click)="showItemDetails(item.idDrink)">
-        <img src="{{item.strDrinkThumb}}" class="card-img-top" alt="Item Image">
+        <img src="{{item.strDrinkThumb}}" alt="Item Image">
         <div class="card-body">
-          <h6 class="card-title">{{item.strDrink}}</h6>
-          <p class="card-text">
+          <h6><strong>{{item.strDrink}}</strong></h6>
+          <p>
             <strong>Category:</strong> {{item.strCategory}}<br>
             <strong>Alcoholic:</strong> {{item.strAlcoholic}}<br>
             <strong>Base Ingredient:</strong> {{item.strIngredient1}}<br>

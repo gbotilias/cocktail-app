@@ -17,7 +17,6 @@ export class ItemDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((respone: any) => {
-      console.log(respone.data.drinks[0]);
       this.itemDetail = respone.data.drinks[0];
     })
   }

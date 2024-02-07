@@ -2,14 +2,13 @@
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 
 .light-theme {
-    background: #ffffff;
-  }
+  background: #ffffff;
+}
 
 .dark-theme {
-    background: rgb(36, 36, 36);
-  }
+  background: #333333;
+}
   
 .body {
-    background: var(--background);
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
+  background: var(--background);
+}

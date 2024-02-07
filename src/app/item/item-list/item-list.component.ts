@@ -11,8 +11,8 @@ export class ItemListComponent implements OnInit {
 
   public itemList: ItemModel[] = [];
   filteredItemList: any[] = [];
-  searchIngredient: string = '';
-  categories: any[] = [];
+  searchByName: string = '';
+  categories: string[] = [];
   selectedCategory: string = '';
 
   constructor(
@@ -22,31 +22,49 @@ export class ItemListComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((response: any) => {
-      console.log(response.data.drinks);
       this.itemList = response.data.drinks;
       this.filteredItemList = [...this.itemList];
-
-      // Extract unique categories
-      this.categories = this.itemList.map(item => item.strCategory)
-        .filter((value, index, self) => self.indexOf(value) === index);
-
+      this.categories = this.getCategories();
+      this.selectCategory();
     }, error => {
       console.log(error);
     })
   }
 
-  filterItemList() {
-    this.filteredItemList = this.itemList.filter(item => {
-      return item.strIngredient1.toLowerCase().includes(this.searchIngredient.toLowerCase());
+  getCategories(): string[] {
+    const allCategories: string[] = [];
+    this.itemList.forEach((item) => {
+      if (!allCategories.includes(item.strCategory)) {
+        allCategories.push(item.strCategory);
+      }
     });
+    return allCategories;
   }
 
-  selectCategory() {
-    this.filteredItemList = this.itemList.filter(item => {
-      const ingredientMatch = item.strIngredient1.toLowerCase().includes(this.searchIngredient.toLowerCase());
-      const categoryMatch = !this.selectedCategory || item.strCategory === this.selectedCategory;
-      return ingredientMatch && categoryMatch;
-    });
+  searchItemByName(): void { 
+    if (this.selectedCategory !== '') {
+      this.filteredItemList = this.itemList.filter(item =>
+        item.strDrink.toLowerCase().includes(this.searchByName.toLowerCase()) &&
+        item.strCategory === this.selectedCategory
+      );
+    } else {
+      this.filteredItemList = this.itemList.filter(item =>
+        item.strDrink.toLowerCase().includes(this.searchByName.toLowerCase())
+      );
+    }
+  }
+
+  selectCategory(): void {
+    if (this.selectedCategory !== '') {
+      this.filteredItemList = this.itemList.filter(item =>
+        item.strCategory === this.selectedCategory &&
+        item.strDrink.toLowerCase().includes(this.searchByName.toLowerCase())  
+      );
+    } else {
+      this.filteredItemList = this.itemList.filter(item =>
+        item.strDrink.toLowerCase().includes(this.searchByName.toLowerCase())
+      );
+    }
   }
 
   showItemDetails(itemId: string): void {
