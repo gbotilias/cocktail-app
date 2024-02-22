@@ -1,20 +1,23 @@
 <div class="container">
+  <!-- Search Input and Select Category Row -->
   <div class="row" style="margin-bottom: 20px;">
     <!-- Search Input -->
     <div class="col-md-6 col-sm-12">
       <input type="text" class="form-control" placeholder="Search by name" 
-      [(ngModel)]="searchByName" (input)="searchItemByName()"/>
+      (input)="onSearchChange($any($event.target).value)"/>
     </div>
     <!-- Select Category -->
     <div class="col-md-6 col-sm-12" style="text-align: -webkit-right;">
-      <select class="form-select" [(ngModel)]="selectedCategory" (change)="selectCategory()">
+      <select class="form-select" (change)="onCategoryChange($any($event.target).value)">
         <option value="" selected>All Categories</option>
         <option *ngFor="let category of categories" [value]="category">{{category}}</option>
       </select>
     </div>
   </div>
-  <!-- Item List -->
+
+  <!-- Item List Row -->
   <div class="row">
+    <!-- Display Item Cards -->
     <div *ngFor="let item of filteredItemList" class="col-md-3" style="margin-bottom: 50px">
       <div class="card" (click)="showItemDetails(item.idDrink)">
         <img src="{{item.strDrinkThumb}}" alt="Item Image">
