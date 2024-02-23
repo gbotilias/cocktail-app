@@ -1,4 +1,12 @@
 <div class="container">
+    <!-- Error Message -->
+  <div class="row" *ngIf="errorMessage">
+    <div class="col-12">
+      <div class="alert alert-danger" role="alert">
+        {{errorMessage}}
+      </div>
+    </div>
+  </div>
     <div class="cocktail-details">
         <!-- Title -->
         <h3 style="font-weight: 700;">{{itemDetail.strDrink}}</h3>

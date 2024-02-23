@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, tap, throwError } from 'rxjs';
 import { ItemModel } from 'src/app/_models/item-model';
 
 @Component({
@@ -10,30 +11,37 @@ import { ItemModel } from 'src/app/_models/item-model';
 export class ItemListComponent implements OnInit {
 
   public itemList: ItemModel[] = [];
-  filteredItemList: ItemModel[] = [];
-  searchByName: string = '';
-  categories: string[] = [];
-  selectedCategory: string = '';
+  public filteredItemList: ItemModel[] = [];
+  public searchByName: string = '';
+  public categories: string[] = [];
+  public selectedCategory: string = '';
+  public errorMessage: string | null = null;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) { }
 
+
   ngOnInit(): void {
-    // Fetch data from the resolved route and initialize components
-    this.activatedRoute.data.subscribe((response: any) => {
+    // Fetch data from the resolved route
+    this.activatedRoute.data.pipe(
+      // Handle the error response
+      catchError((error) => {
+        console.error('Error fetching data:', error);
+        this.errorMessage = 'Error fetching data. Please try again.';
+        return [];
+      })
+    ).subscribe((response: any) => { // Handle the success response
       this.itemList = response.data.drinks;
-      // Make a copy of the itemList for filtering
+      // Make a copy for filtering
       this.filteredItemList = [...this.itemList];
-      // Get unique categories from the itemList
       this.categories = this.getCategories();
-      // Initial filter to display items
       this.filterItems();
-    }, error => {
-      console.log(error);
-    })
+    });
+
   }
+
 
   // Method to get unique categories
   getCategories(): string[] {
