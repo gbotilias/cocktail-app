@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, tap, throwError } from 'rxjs';
 import { ItemModel } from 'src/app/_models/item-model';
 
 @Component({
@@ -22,26 +21,23 @@ export class ItemListComponent implements OnInit {
     private router: Router,
   ) { }
 
-
   ngOnInit(): void {
     // Fetch data from the resolved route
-    this.activatedRoute.data.pipe(
-      // Handle the error response
-      catchError((error) => {
-        console.error('Error fetching data:', error);
-        this.errorMessage = 'Error fetching data. Please try again.';
-        return [];
-      })
-    ).subscribe((response: any) => { // Handle the success response
-      this.itemList = response.data.drinks;
-      // Make a copy for filtering
-      this.filteredItemList = [...this.itemList];
-      this.categories = this.getCategories();
-      this.filterItems();
-    });
-
+    this.activatedRoute.data
+      .subscribe({
+        next: (response: any) => {
+          this.itemList = response.data.drinks;
+          // Make a copy for filtering
+          this.filteredItemList = [...this.itemList];
+          this.categories = this.getCategories();
+          this.filterItems();
+        },
+        error: (error: any) => {
+          // Handle error
+          this.errorMessage = error.message;
+        },
+      });
   }
-
 
   // Method to get unique categories
   getCategories(): string[] {

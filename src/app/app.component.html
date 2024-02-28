@@ -1,10 +1,17 @@
 <div>
-    <header class="header-bar">
+    <header class="header-bar d-flex justify-content-between">
+        <div>
+            <!-- Conditionally display close button for item-detail page -->
+            <button *ngIf="currentRoute !== '/item-list'" type="button" class="btn btn-white"
+                (click)="closeItemDetail()">
+                <span><i class="bi bi-x"></i> Close</span>
+            </button>
+        </div>
         <button *ngIf="currentTheme === 'light'" type="button" class="btn btn-white" (click)="toggleTheme()">
             <span><i class="bi bi-moon"></i> Darkmode</span>
         </button>
-        <button *ngIf="currentTheme === 'dark'" type="button" class="btn btn-white"
-        style="background-color: white;" (click)="toggleTheme()">
+        <button *ngIf="currentTheme === 'dark'" type="button" class="btn btn-white" style="background-color: white;"
+            (click)="toggleTheme()">
             <span><i class="bi bi-sun"></i> Lightmode</span>
         </button>
     </header>
