@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router, RouterEvent } from '@angular/router';
-import { filter } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,38 +12,34 @@ export class AppComponent {
   currentRoute: string | undefined;
 
   constructor(private router: Router) {
+    // Get current theme if exists (or set light)
     this.currentTheme = localStorage.getItem('currentTheme') || 'light';
+    // Apply theme
     this.applyTheme();
-    this.router.events.pipe(
-      filter((event): event is NavigationEnd => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      // Update the currentRoute variable when navigation ends
-      this.currentRoute = event.url;
-      console.log(this.currentRoute);
-      
+    // Get current route
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Update view of close button
+        this.currentRoute = event.url;
+      }
     });
-    
-    
   }
 
+  // Method to toggle between light and dark themes
   toggleTheme() {
     this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light'
     localStorage.setItem('currentTheme', this.currentTheme);
     this.applyTheme();
   }
 
+  // Method to apply the selected theme to the body
   applyTheme() {
     document.body.classList.remove('dark-theme', 'light-theme');
     document.body.classList.add(`${this.currentTheme}-theme`);
   }
 
-  // Method to check if the current route is the item-detail page
-  isItemDetailPage(): boolean {
-    return false
-  }
-
+  // Method to navigate to the item-list page
   closeItemDetail(): void {
-    // Implement logic to navigate back or close the item-detail page
-    // For example, you can use router.navigate or window.history.back
+    this.router.navigateByUrl('/item-list');
   }
 }

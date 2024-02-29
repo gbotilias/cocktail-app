@@ -1,14 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 
-.light-theme {
-  background: #ffffff;
+/* Define global CSS variables */
+:root {
+  --background-color-light: #ffffff;
+  --background-color-dark: #333333;
+  --text-color: #333333;
 }
 
-.dark-theme {
-  background: #333333;
+/* Use CSS variable for light theme */
+.light-theme {
+  background-color: var(--background-color-light);
 }
-  
-.body {
-  background: var(--background);
+
+/* Use CSS variable for dark theme */
+.dark-theme {
+  background-color: var(--background-color-dark);
 }

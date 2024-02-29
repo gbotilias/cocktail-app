@@ -14,6 +14,7 @@
     font-size: 14px; 
 }
 
+/* Use global text color variable */
 p, h6 {
-    color: #333333;
-  }
+    color: var(--text-color);
+}

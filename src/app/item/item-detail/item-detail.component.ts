@@ -17,15 +17,18 @@ export class ItemDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // Subscribe to the resolved data from the route
     this.activatedRoute.data
       .subscribe({
         next: (response: any) => {
+          // Check if there is data and at least one item in the drinks array
           if (response.data && response.data.drinks && response.data.drinks.length > 0) {
+            // Set the itemDetail to the first item in the drinks array
             this.itemDetail = response.data.drinks[0];
           }
         },
         error: (error: any) => {
-          // Handle error
+          // Handle the error response
           this.errorMessage = error.message;
         },
       });
