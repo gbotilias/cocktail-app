@@ -1,10 +1,8 @@
 <div class="container">
   <!-- Error Message -->
-  <div class="row" *ngIf="errorMessage">
-    <div class="col-12">
-      <div class="alert alert-danger" role="alert">
-        {{errorMessage}}
-      </div>
+  <div *ngIf="!errorMessage">
+    <div class="alert alert-danger" role="alert">
+      {{errorMessage}}
     </div>
   </div>
 
@@ -38,6 +36,12 @@
             <strong>Base Ingredient:</strong> {{item.strIngredient1}}<br>
           </p>
         </div>
+      </div>
+    </div>
+    <!-- No Data Message -->
+    <div *ngIf="filteredItemList.length === 0">
+      <div class="alert alert-info" role="alert">
+        No cocktails found.
       </div>
     </div>
   </div>
