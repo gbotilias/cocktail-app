@@ -3,7 +3,7 @@
     <header class="header-bar justify-content-between">
         <div>
             <!-- Conditionally display close button for item-detail page -->
-            <button *ngIf="currentRoute !== '/item-list' && currentRoute !== undefined" type="button"
+            <button *ngIf="isDetailPage" type="button"
                 class="btn btn-white btn-bg-darkmode" (click)="closeItemDetail()">
                 <span><i class="bi bi-x-lg"></i> Close</span>
             </button>

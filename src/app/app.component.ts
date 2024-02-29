@@ -9,18 +9,26 @@ import { NavigationEnd, Router } from '@angular/router';
 export class AppComponent {
   title = 'cocktail-app';
   currentTheme: string;
-  currentRoute: string | undefined;
+  isDetailPage: boolean = false;
 
   constructor(private router: Router) {
     // Get current theme if exists (or set light)
     this.currentTheme = localStorage.getItem('currentTheme') || 'light';
+
     // Apply theme
     this.applyTheme();
-    // Get current route
+
+    // Get current route and update view of close button
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        // Update view of close button
-        this.currentRoute = event.url;
+        let currentRoute = event.url;
+        if (currentRoute !== '/item-list' &&
+          currentRoute !== '/' &&
+          currentRoute !== undefined) {
+          this.isDetailPage = true;
+        } else {
+          this.isDetailPage = false;
+        }
       }
     });
   }
